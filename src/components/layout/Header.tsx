@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X, Building2, Globe, ExternalLink } from "lucide-react";
+import { ChevronDown, Menu, X, Building2, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface NavItem {
@@ -15,6 +15,7 @@ const navigation: NavItem[] = [
     label: "About",
     children: [
       { label: "Overview", href: "/about", description: "Our mission and mandate" },
+      { label: "Contextual Framework", href: "/context", description: "Problem statement and challenges" },
       { label: "How It Works", href: "/how-it-works", description: "Platform architecture and model" },
       { label: "Governance", href: "/governance", description: "Transparency and structure" },
       { label: "Contact", href: "/contact", description: "Get in touch with us" },
@@ -48,13 +49,36 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const headerRef = useRef<HTMLElement>(null);
 
   const isActive = (href: string) => location.pathname === href;
   const isParentActive = (children: NavItem["children"]) =>
     children?.some((child) => location.pathname === child.href);
 
+  // Click outside handler
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setOpenDropdown(null);
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  const handleDropdownClick = (label: string) => {
+    setOpenDropdown(openDropdown === label ? null : label);
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+    <header ref={headerRef} className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container-wide">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -71,12 +95,7 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
             {navigation.map((item) => (
-              <div
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => item.children && setOpenDropdown(item.label)}
-                onMouseLeave={() => setOpenDropdown(null)}
-              >
+              <div key={item.label} className="relative">
                 {item.href ? (
                   <Link
                     to={item.href}
@@ -88,12 +107,15 @@ export function Header() {
                   </Link>
                 ) : (
                   <button
+                    onClick={() => handleDropdownClick(item.label)}
                     className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-muted ${
-                      isParentActive(item.children) ? "text-link" : "text-text-secondary hover:text-text-primary"
+                      isParentActive(item.children) || openDropdown === item.label
+                        ? "text-link"
+                        : "text-text-secondary hover:text-text-primary"
                     }`}
                   >
                     {item.label}
-                    <ChevronDown className="h-3.5 w-3.5" />
+                    <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`} />
                   </button>
                 )}
 
@@ -161,23 +183,31 @@ export function Header() {
                     </Link>
                   ) : (
                     <div className="space-y-1">
-                      <div className="px-4 py-2 text-sm font-medium text-text-primary">{item.label}</div>
-                      <div className="pl-4 space-y-1">
-                        {item.children?.map((child) => (
-                          <Link
-                            key={child.href}
-                            to={child.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className={`block px-4 py-2 text-sm rounded-md ${
-                              isActive(child.href)
-                                ? "text-link bg-muted"
-                                : "text-text-secondary hover:text-text-primary hover:bg-muted"
-                            }`}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
+                      <button
+                        onClick={() => handleDropdownClick(item.label)}
+                        className="w-full flex items-center justify-between px-4 py-2 text-sm font-medium text-text-primary hover:bg-muted rounded-md"
+                      >
+                        {item.label}
+                        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`} />
+                      </button>
+                      {openDropdown === item.label && (
+                        <div className="pl-4 space-y-1">
+                          {item.children?.map((child) => (
+                            <Link
+                              key={child.href}
+                              to={child.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className={`block px-4 py-2 text-sm rounded-md ${
+                                isActive(child.href)
+                                  ? "text-link bg-muted"
+                                  : "text-text-secondary hover:text-text-primary hover:bg-muted"
+                              }`}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
