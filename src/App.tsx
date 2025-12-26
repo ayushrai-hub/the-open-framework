@@ -40,6 +40,10 @@ import NgoMessagesPage from "./pages/ngo/NgoMessagesPage";
 import NgoReportsPage from "./pages/ngo/NgoReportsPage";
 import NgoFundingPage from "./pages/ngo/NgoFundingPage";
 import NgoSettingsPage from "./pages/ngo/NgoSettingsPage";
+import NgoTalentPage from "./pages/ngo/NgoTalentPage";
+// Registry Pages
+import RegistrySearchPage from "./pages/registry/RegistrySearchPage";
+import NgoPublicProfilePage from "./pages/registry/NgoPublicProfilePage";
 
 const queryClient = new QueryClient();
 
@@ -88,9 +92,12 @@ const App = () => (
             <Route path="/ngo/funding" element={<NgoFundingPage />} />
             <Route path="/ngo/settings" element={<NgoSettingsPage />} />
             <Route path="/ngo/opportunities" element={<NgoFundingPage />} />
-            <Route path="/ngo/talent" element={<NgoDashboardPage />} />
+            <Route path="/ngo/talent" element={<NgoTalentPage />} />
             <Route path="/ngo/grants" element={<NgoFundingPage />} />
             <Route path="/ngo/donors" element={<NgoMessagesPage />} />
+            {/* Registry Pages */}
+            <Route path="/registry/search" element={<RegistrySearchPage />} />
+            <Route path="/registry/profile/:id" element={<NgoPublicProfilePage />} />
             {/* Resources */}
             <Route path="/resources/templates" element={<ComplianceTemplatesPage />} />
             <Route path="/resources/api" element={<ApiReferencePage />} />
