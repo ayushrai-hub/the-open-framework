@@ -109,7 +109,7 @@ export default function JoinUsPage() {
             {roles.map((role) => {
                 const IconComponent = role.icon;
                 const isSelected = selectedRole === role.id;
-                const linkPath = role.id === "ngo" ? "/onboarding/ngo/identity" 
+                const linkPath = role.id === "ngo" ? "/ecosystem/ngos" 
                   : role.id === "donor" ? "/onboarding/donor/identity"
                   : role.id === "volunteer" ? "/onboarding/talent"
                   : null;

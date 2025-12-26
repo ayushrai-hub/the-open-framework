@@ -47,7 +47,7 @@ const journeys = [
       { number: "3", title: "Get Visible", description: "Receive a \"Verified\" badge and appear in donor searches." },
     ],
     cta: "Start NGO Registration",
-    href: "/onboarding/ngo/identity",
+    href: "/ecosystem/ngos",
   },
   {
     icon: Heart,
