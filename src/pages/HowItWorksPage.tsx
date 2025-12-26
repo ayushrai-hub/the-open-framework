@@ -47,7 +47,7 @@ const journeys = [
       { number: "3", title: "Get Visible", description: "Receive a \"Verified\" badge and appear in donor searches." },
     ],
     cta: "Start NGO Registration",
-    href: "/ecosystem/ngos",
+    href: "/onboarding/ngo/identity",
   },
   {
     icon: Heart,
@@ -59,7 +59,7 @@ const journeys = [
       { number: "3", title: "Connect", description: "Directly contact verified NGOs. No platform middlemen." },
     ],
     cta: "Access Donor Portal",
-    href: "/ecosystem/donors",
+    href: "/onboarding/donor/identity",
   },
   {
     icon: Users,
@@ -71,7 +71,7 @@ const journeys = [
       { number: "3", title: "Apply", description: "Submit applications directly through the platform." },
     ],
     cta: "Find Opportunities",
-    href: "/ecosystem/volunteers",
+    href: "/onboarding/talent",
   },
 ];
 
