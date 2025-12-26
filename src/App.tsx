@@ -14,6 +14,8 @@ import CareersPage from "./pages/CareersPage";
 import ContactPage from "./pages/ContactPage";
 import ContextPage from "./pages/ContextPage";
 import JoinUsPage from "./pages/JoinUsPage";
+import ApiReferencePage from "./pages/ApiReferencePage";
+import ComplianceTemplatesPage from "./pages/ComplianceTemplatesPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,8 +43,8 @@ const App = () => (
             <Route path="/ecosystem/donors" element={<HomePage />} />
             <Route path="/ecosystem/volunteers" element={<HomePage />} />
             <Route path="/ecosystem/network" element={<HomePage />} />
-            <Route path="/resources/templates" element={<DocumentationPage />} />
-            <Route path="/resources/api" element={<DocumentationPage />} />
+            <Route path="/resources/templates" element={<ComplianceTemplatesPage />} />
+            <Route path="/resources/api" element={<ApiReferencePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
