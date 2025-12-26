@@ -136,14 +136,14 @@ const NgoDashboardPage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Link to="/ngo/profile/preview" className="flex items-center justify-between text-sm hover:bg-muted p-2 rounded-md transition-colors">
+                <Link to="/registry/profile/seva-foundation" className="flex items-center justify-between text-sm hover:bg-muted p-2 rounded-md transition-colors">
                   <span className="flex items-center gap-2">
                     <Eye className="h-4 w-4 text-muted-foreground" />
                     Public NGO Profile View
                   </span>
                   <ExternalLink className="h-4 w-4 text-muted-foreground" />
                 </Link>
-                <Link to="/ngo/registry" className="flex items-center justify-between text-sm hover:bg-muted p-2 rounded-md transition-colors">
+                <Link to="/registry/search" className="flex items-center justify-between text-sm hover:bg-muted p-2 rounded-md transition-colors">
                   <span className="flex items-center gap-2">
                     <FileText className="h-4 w-4 text-muted-foreground" />
                     NGO Registry Listing
