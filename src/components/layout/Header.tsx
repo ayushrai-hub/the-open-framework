@@ -41,7 +41,10 @@ const navigation: NavItem[] = [
   },
   {
     label: "Careers",
-    href: "/careers",
+    children: [
+      { label: "Overview", href: "/careers", description: "Open positions and culture" },
+      { label: "Join Us", href: "/join", description: "Onboard to the ecosystem" },
+    ],
   },
 ];
 
