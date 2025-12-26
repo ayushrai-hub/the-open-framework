@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -105,14 +106,19 @@ export default function JoinUsPage() {
         <section className="py-10 border-b border-border">
           <div className="container-wide max-w-5xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {roles.map((role) => {
+            {roles.map((role) => {
                 const IconComponent = role.icon;
                 const isSelected = selectedRole === role.id;
+                const linkPath = role.id === "ngo" ? "/onboarding/ngo/identity" 
+                  : role.id === "donor" ? "/onboarding/donor/identity"
+                  : role.id === "volunteer" ? "/onboarding/talent"
+                  : null;
                 
                 return (
-                  <button
+                  <Link
                     key={role.id}
-                    onClick={() => setSelectedRole(role.id)}
+                    to={linkPath || "#"}
+                    onClick={(e) => { if (!linkPath) e.preventDefault(); setSelectedRole(role.id); }}
                     className={`text-left p-6 rounded-xl border-2 transition-all duration-200 hover:shadow-md ${
                       isSelected 
                         ? "border-primary bg-primary/5 shadow-sm" 
@@ -124,7 +130,7 @@ export default function JoinUsPage() {
                     </div>
                     <h3 className="font-semibold text-text-primary mb-2">{role.title}</h3>
                     <p className="text-sm text-text-secondary leading-relaxed">{role.description}</p>
-                  </button>
+                  </Link>
                 );
               })}
             </div>

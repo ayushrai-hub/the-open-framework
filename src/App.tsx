@@ -17,6 +17,18 @@ import JoinUsPage from "./pages/JoinUsPage";
 import ApiReferencePage from "./pages/ApiReferencePage";
 import ComplianceTemplatesPage from "./pages/ComplianceTemplatesPage";
 import NotFound from "./pages/NotFound";
+// NGO Onboarding
+import NgoIdentityPage from "./pages/onboarding/ngo/NgoIdentityPage";
+import NgoLegalPage from "./pages/onboarding/ngo/NgoLegalPage";
+import NgoVisibilityPage from "./pages/onboarding/ngo/NgoVisibilityPage";
+import NgoVerifyPage from "./pages/onboarding/ngo/NgoVerifyPage";
+// Donor Onboarding
+import DonorIdentityPage from "./pages/onboarding/donor/DonorIdentityPage";
+import DonorInterestsPage from "./pages/onboarding/donor/DonorInterestsPage";
+import DonorGeographyPage from "./pages/onboarding/donor/DonorGeographyPage";
+import DonorNotificationsPage from "./pages/onboarding/donor/DonorNotificationsPage";
+// Talent Onboarding
+import TalentOnboardingPage from "./pages/onboarding/talent/TalentOnboardingPage";
 
 const queryClient = new QueryClient();
 
@@ -38,10 +50,22 @@ const App = () => (
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/join" element={<JoinUsPage />} />
-            {/* Placeholder routes for ecosystem pages */}
-            <Route path="/ecosystem/ngos" element={<HomePage />} />
-            <Route path="/ecosystem/donors" element={<HomePage />} />
-            <Route path="/ecosystem/volunteers" element={<HomePage />} />
+            {/* NGO Onboarding Flow */}
+            <Route path="/onboarding/ngo/identity" element={<NgoIdentityPage />} />
+            <Route path="/onboarding/ngo/legal" element={<NgoLegalPage />} />
+            <Route path="/onboarding/ngo/visibility" element={<NgoVisibilityPage />} />
+            <Route path="/onboarding/ngo/verify" element={<NgoVerifyPage />} />
+            {/* Donor Onboarding Flow */}
+            <Route path="/onboarding/donor/identity" element={<DonorIdentityPage />} />
+            <Route path="/onboarding/donor/interests" element={<DonorInterestsPage />} />
+            <Route path="/onboarding/donor/geography" element={<DonorGeographyPage />} />
+            <Route path="/onboarding/donor/notifications" element={<DonorNotificationsPage />} />
+            {/* Talent Onboarding */}
+            <Route path="/onboarding/talent" element={<TalentOnboardingPage />} />
+            {/* Placeholder routes */}
+            <Route path="/ecosystem/ngos" element={<NgoIdentityPage />} />
+            <Route path="/ecosystem/donors" element={<DonorIdentityPage />} />
+            <Route path="/ecosystem/volunteers" element={<TalentOnboardingPage />} />
             <Route path="/ecosystem/network" element={<HomePage />} />
             <Route path="/resources/templates" element={<ComplianceTemplatesPage />} />
             <Route path="/resources/api" element={<ApiReferencePage />} />
