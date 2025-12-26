@@ -11,6 +11,7 @@ import DocumentationPage from "./pages/DocumentationPage";
 import CommunityPage from "./pages/CommunityPage";
 import CareersPage from "./pages/CareersPage";
 import ContactPage from "./pages/ContactPage";
+import ContextPage from "./pages/ContextPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/context" element={<ContextPage />} />
           <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/governance" element={<GovernancePage />} />
           <Route path="/documentation" element={<DocumentationPage />} />
