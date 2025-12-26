@@ -95,6 +95,7 @@ const App = () => (
             <Route path="/ngo/talent" element={<NgoTalentPage />} />
             <Route path="/ngo/grants" element={<NgoFundingPage />} />
             <Route path="/ngo/donors" element={<NgoMessagesPage />} />
+            <Route path="/ngo/profile/preview" element={<NgoPublicProfilePage />} />
             {/* Registry Pages */}
             <Route path="/registry/search" element={<RegistrySearchPage />} />
             <Route path="/registry/profile/:id" element={<NgoPublicProfilePage />} />
