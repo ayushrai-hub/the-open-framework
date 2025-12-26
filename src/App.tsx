@@ -31,6 +31,15 @@ import DonorNotificationsPage from "./pages/onboarding/donor/DonorNotificationsP
 import TalentOnboardingPage from "./pages/onboarding/talent/TalentOnboardingPage";
 // Ecosystem Entry Pages
 import NgoEntryPage from "./pages/ecosystem/NgoEntryPage";
+import EcosystemMapPage from "./pages/ecosystem/EcosystemMapPage";
+// NGO Dashboard Pages
+import NgoDashboardPage from "./pages/ngo/NgoDashboardPage";
+import NgoProfilePage from "./pages/ngo/NgoProfilePage";
+import NgoCompliancePage from "./pages/ngo/NgoCompliancePage";
+import NgoMessagesPage from "./pages/ngo/NgoMessagesPage";
+import NgoReportsPage from "./pages/ngo/NgoReportsPage";
+import NgoFundingPage from "./pages/ngo/NgoFundingPage";
+import NgoSettingsPage from "./pages/ngo/NgoSettingsPage";
 
 const queryClient = new QueryClient();
 
@@ -64,11 +73,25 @@ const App = () => (
             <Route path="/onboarding/donor/notifications" element={<DonorNotificationsPage />} />
             {/* Talent Onboarding */}
             <Route path="/onboarding/talent" element={<TalentOnboardingPage />} />
-            {/* Ecosystem Entry Pages */}
+            {/* Ecosystem Pages */}
             <Route path="/ecosystem/ngos" element={<NgoEntryPage />} />
             <Route path="/ecosystem/donors" element={<DonorIdentityPage />} />
             <Route path="/ecosystem/volunteers" element={<TalentOnboardingPage />} />
             <Route path="/ecosystem/network" element={<HomePage />} />
+            <Route path="/ecosystem/map" element={<EcosystemMapPage />} />
+            {/* NGO Dashboard */}
+            <Route path="/ngo/dashboard" element={<NgoDashboardPage />} />
+            <Route path="/ngo/profile" element={<NgoProfilePage />} />
+            <Route path="/ngo/compliance" element={<NgoCompliancePage />} />
+            <Route path="/ngo/messages" element={<NgoMessagesPage />} />
+            <Route path="/ngo/reports" element={<NgoReportsPage />} />
+            <Route path="/ngo/funding" element={<NgoFundingPage />} />
+            <Route path="/ngo/settings" element={<NgoSettingsPage />} />
+            <Route path="/ngo/opportunities" element={<NgoFundingPage />} />
+            <Route path="/ngo/talent" element={<NgoDashboardPage />} />
+            <Route path="/ngo/grants" element={<NgoFundingPage />} />
+            <Route path="/ngo/donors" element={<NgoMessagesPage />} />
+            {/* Resources */}
             <Route path="/resources/templates" element={<ComplianceTemplatesPage />} />
             <Route path="/resources/api" element={<ApiReferencePage />} />
             <Route path="*" element={<NotFound />} />
