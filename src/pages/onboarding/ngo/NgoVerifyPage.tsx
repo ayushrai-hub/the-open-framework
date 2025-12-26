@@ -29,8 +29,8 @@ export default function NgoVerifyPage() {
   const [declaration, setDeclaration] = useState(false);
 
   const handleSubmit = () => {
-    // Submit logic
-    navigate("/");
+    // Submit logic - redirect to NGO Dashboard
+    navigate("/ngo/dashboard");
   };
 
   const handleBack = () => {
