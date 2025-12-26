@@ -29,6 +29,8 @@ import DonorGeographyPage from "./pages/onboarding/donor/DonorGeographyPage";
 import DonorNotificationsPage from "./pages/onboarding/donor/DonorNotificationsPage";
 // Talent Onboarding
 import TalentOnboardingPage from "./pages/onboarding/talent/TalentOnboardingPage";
+// Ecosystem Entry Pages
+import NgoEntryPage from "./pages/ecosystem/NgoEntryPage";
 
 const queryClient = new QueryClient();
 
@@ -62,8 +64,8 @@ const App = () => (
             <Route path="/onboarding/donor/notifications" element={<DonorNotificationsPage />} />
             {/* Talent Onboarding */}
             <Route path="/onboarding/talent" element={<TalentOnboardingPage />} />
-            {/* Placeholder routes */}
-            <Route path="/ecosystem/ngos" element={<NgoIdentityPage />} />
+            {/* Ecosystem Entry Pages */}
+            <Route path="/ecosystem/ngos" element={<NgoEntryPage />} />
             <Route path="/ecosystem/donors" element={<DonorIdentityPage />} />
             <Route path="/ecosystem/volunteers" element={<TalentOnboardingPage />} />
             <Route path="/ecosystem/network" element={<HomePage />} />
