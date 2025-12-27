@@ -22,6 +22,7 @@ import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/auth/LoginPage";
 import UserProfilePage from "./pages/profile/UserProfilePage";
 import EditProfilePage from "./pages/profile/EditProfilePage";
+import PublicProfilePage from "./pages/profile/PublicProfilePage";
 import AccountSecurityPage from "./pages/account/AccountSecurityPage";
 // NGO Onboarding
 import NgoIdentityPage from "./pages/onboarding/ngo/NgoIdentityPage";
@@ -76,6 +77,8 @@ const App = () => (
               <Route path="/login" element={<LoginPage />} />
               <Route path="/profile" element={<UserProfilePage />} />
               <Route path="/profile/edit" element={<EditProfilePage />} />
+              <Route path="/profile/public" element={<PublicProfilePage />} />
+              <Route path="/profile/public/:id" element={<PublicProfilePage />} />
               <Route path="/account/security" element={<AccountSecurityPage />} />
               {/* NGO Onboarding Flow */}
               <Route path="/onboarding/ngo/identity" element={<NgoIdentityPage />} />
