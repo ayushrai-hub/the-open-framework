@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { AuthProvider } from "@/contexts/AuthContext";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import HowItWorksPage from "./pages/HowItWorksPage";
@@ -17,6 +18,11 @@ import JoinUsPage from "./pages/JoinUsPage";
 import ApiReferencePage from "./pages/ApiReferencePage";
 import ComplianceTemplatesPage from "./pages/ComplianceTemplatesPage";
 import NotFound from "./pages/NotFound";
+// Auth Pages
+import LoginPage from "./pages/auth/LoginPage";
+import UserProfilePage from "./pages/profile/UserProfilePage";
+import EditProfilePage from "./pages/profile/EditProfilePage";
+import AccountSecurityPage from "./pages/account/AccountSecurityPage";
 // NGO Onboarding
 import NgoIdentityPage from "./pages/onboarding/ngo/NgoIdentityPage";
 import NgoLegalPage from "./pages/onboarding/ngo/NgoLegalPage";
@@ -51,60 +57,67 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/context" element={<ContextPage />} />
-            <Route path="/how-it-works" element={<HowItWorksPage />} />
-            <Route path="/governance" element={<GovernancePage />} />
-            <Route path="/documentation" element={<DocumentationPage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/careers" element={<CareersPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/join" element={<JoinUsPage />} />
-            {/* NGO Onboarding Flow */}
-            <Route path="/onboarding/ngo/identity" element={<NgoIdentityPage />} />
-            <Route path="/onboarding/ngo/legal" element={<NgoLegalPage />} />
-            <Route path="/onboarding/ngo/visibility" element={<NgoVisibilityPage />} />
-            <Route path="/onboarding/ngo/verify" element={<NgoVerifyPage />} />
-            {/* Donor Onboarding Flow */}
-            <Route path="/onboarding/donor/identity" element={<DonorIdentityPage />} />
-            <Route path="/onboarding/donor/interests" element={<DonorInterestsPage />} />
-            <Route path="/onboarding/donor/geography" element={<DonorGeographyPage />} />
-            <Route path="/onboarding/donor/notifications" element={<DonorNotificationsPage />} />
-            {/* Talent Onboarding */}
-            <Route path="/onboarding/talent" element={<TalentOnboardingPage />} />
-            {/* Ecosystem Pages */}
-            <Route path="/ecosystem/ngos" element={<NgoEntryPage />} />
-            <Route path="/ecosystem/donors" element={<DonorIdentityPage />} />
-            <Route path="/ecosystem/volunteers" element={<TalentOnboardingPage />} />
-            <Route path="/ecosystem/network" element={<HomePage />} />
-            <Route path="/ecosystem/map" element={<EcosystemMapPage />} />
-            {/* NGO Dashboard */}
-            <Route path="/ngo/dashboard" element={<NgoDashboardPage />} />
-            <Route path="/ngo/profile" element={<NgoProfilePage />} />
-            <Route path="/ngo/compliance" element={<NgoCompliancePage />} />
-            <Route path="/ngo/messages" element={<NgoMessagesPage />} />
-            <Route path="/ngo/reports" element={<NgoReportsPage />} />
-            <Route path="/ngo/funding" element={<NgoFundingPage />} />
-            <Route path="/ngo/settings" element={<NgoSettingsPage />} />
-            <Route path="/ngo/opportunities" element={<NgoFundingPage />} />
-            <Route path="/ngo/talent" element={<NgoTalentPage />} />
-            <Route path="/ngo/grants" element={<NgoFundingPage />} />
-            <Route path="/ngo/donors" element={<NgoMessagesPage />} />
-            <Route path="/ngo/profile/preview" element={<NgoPublicProfilePage />} />
-            {/* Registry Pages */}
-            <Route path="/registry/search" element={<RegistrySearchPage />} />
-            <Route path="/registry/profile/:id" element={<NgoPublicProfilePage />} />
-            {/* Resources */}
-            <Route path="/resources/templates" element={<ComplianceTemplatesPage />} />
-            <Route path="/resources/api" element={<ApiReferencePage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <AuthProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/context" element={<ContextPage />} />
+              <Route path="/how-it-works" element={<HowItWorksPage />} />
+              <Route path="/governance" element={<GovernancePage />} />
+              <Route path="/documentation" element={<DocumentationPage />} />
+              <Route path="/community" element={<CommunityPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/join" element={<JoinUsPage />} />
+              {/* Auth Pages */}
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/profile" element={<UserProfilePage />} />
+              <Route path="/profile/edit" element={<EditProfilePage />} />
+              <Route path="/account/security" element={<AccountSecurityPage />} />
+              {/* NGO Onboarding Flow */}
+              <Route path="/onboarding/ngo/identity" element={<NgoIdentityPage />} />
+              <Route path="/onboarding/ngo/legal" element={<NgoLegalPage />} />
+              <Route path="/onboarding/ngo/visibility" element={<NgoVisibilityPage />} />
+              <Route path="/onboarding/ngo/verify" element={<NgoVerifyPage />} />
+              {/* Donor Onboarding Flow */}
+              <Route path="/onboarding/donor/identity" element={<DonorIdentityPage />} />
+              <Route path="/onboarding/donor/interests" element={<DonorInterestsPage />} />
+              <Route path="/onboarding/donor/geography" element={<DonorGeographyPage />} />
+              <Route path="/onboarding/donor/notifications" element={<DonorNotificationsPage />} />
+              {/* Talent Onboarding */}
+              <Route path="/onboarding/talent" element={<TalentOnboardingPage />} />
+              {/* Ecosystem Pages */}
+              <Route path="/ecosystem/ngos" element={<NgoEntryPage />} />
+              <Route path="/ecosystem/donors" element={<DonorIdentityPage />} />
+              <Route path="/ecosystem/volunteers" element={<TalentOnboardingPage />} />
+              <Route path="/ecosystem/network" element={<HomePage />} />
+              <Route path="/ecosystem/map" element={<EcosystemMapPage />} />
+              {/* NGO Dashboard */}
+              <Route path="/ngo/dashboard" element={<NgoDashboardPage />} />
+              <Route path="/ngo/profile" element={<NgoProfilePage />} />
+              <Route path="/ngo/compliance" element={<NgoCompliancePage />} />
+              <Route path="/ngo/messages" element={<NgoMessagesPage />} />
+              <Route path="/ngo/reports" element={<NgoReportsPage />} />
+              <Route path="/ngo/funding" element={<NgoFundingPage />} />
+              <Route path="/ngo/settings" element={<NgoSettingsPage />} />
+              <Route path="/ngo/opportunities" element={<NgoFundingPage />} />
+              <Route path="/ngo/talent" element={<NgoTalentPage />} />
+              <Route path="/ngo/grants" element={<NgoFundingPage />} />
+              <Route path="/ngo/donors" element={<NgoMessagesPage />} />
+              <Route path="/ngo/profile/preview" element={<NgoPublicProfilePage />} />
+              {/* Registry Pages */}
+              <Route path="/registry/search" element={<RegistrySearchPage />} />
+              <Route path="/registry/profile/:id" element={<NgoPublicProfilePage />} />
+              {/* Resources */}
+              <Route path="/resources/templates" element={<ComplianceTemplatesPage />} />
+              <Route path="/resources/api" element={<ApiReferencePage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>
