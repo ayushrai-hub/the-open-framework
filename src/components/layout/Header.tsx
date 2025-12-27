@@ -182,6 +182,9 @@ export function Header() {
                       </div>
                     )}
                     <div className="p-2">
+                      <Link to="/profile/public" className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors">
+                        <Globe className="h-4 w-4 text-text-secondary" /><div><p className="text-sm font-medium text-text-primary">Public Profile</p><p className="text-xs text-text-secondary">View & manage visibility</p></div>
+                      </Link>
                       <Link to="/profile" className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors">
                         <User className="h-4 w-4 text-text-secondary" /><div><p className="text-sm font-medium text-text-primary">My Profile</p><p className="text-xs text-text-secondary">Personal details & bio</p></div>
                       </Link>
