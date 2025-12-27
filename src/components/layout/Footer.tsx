@@ -117,9 +117,23 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="container-wide py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-white">
-            © {new Date().getFullYear()} India DPI Foundation. Licensed under CC-BY-4.0.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="text-sm text-white">
+              © {new Date().getFullYear()} India DPI Foundation. Licensed under CC-BY-4.0.
+            </p>
+            <span className="hidden sm:inline text-white/40">•</span>
+            <p className="text-sm text-white/80">
+              Built by{" "}
+              <a
+                href="https://www.linkedin.com/in/ayushrai02/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:underline font-medium"
+              >
+                Ayush Rai
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-2">
             <span className="flex items-center gap-2 text-sm text-white">
               <span className="w-2 h-2 rounded-full bg-status-operational animate-pulse" />
