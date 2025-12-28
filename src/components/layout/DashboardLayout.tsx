@@ -41,29 +41,75 @@ interface NavItem {
   badge?: number;
 }
 
-const mainNavItems: NavItem[] = [
+type UserRole = "ngo" | "donor" | "talent";
+
+const ngoNavItems: NavItem[] = [
   { label: "Home", href: "/ngo/dashboard", icon: LayoutDashboard },
   { label: "Profile", href: "/ngo/profile", icon: User },
   { label: "Opportunities", href: "/ngo/opportunities", icon: Briefcase },
   { label: "Messages", href: "/ngo/messages", icon: Mail, badge: 3 },
 ];
 
-const secondaryNavItems: NavItem[] = [
-  { label: "Dashboard", href: "/ngo/dashboard", icon: LayoutDashboard },
-  { label: "Funding", href: "/ngo/funding", icon: DollarSign },
-  { label: "Compliance", href: "/ngo/compliance", icon: FileCheck },
-  { label: "Reports", href: "/ngo/reports", icon: BarChart3 },
-  { label: "Network", href: "/ecosystem/map", icon: Globe },
+const donorNavItems: NavItem[] = [
+  { label: "Dashboard", href: "/donor/dashboard", icon: LayoutDashboard },
+  { label: "Discover", href: "/registry/search", icon: Search },
+  { label: "My Portfolio", href: "/donor/saved", icon: Briefcase },
+  { label: "Reports", href: "/donor/reports", icon: BarChart3 },
 ];
+
+const talentNavItems: NavItem[] = [
+  { label: "Dashboard", href: "/talent/dashboard", icon: LayoutDashboard },
+  { label: "Opportunities", href: "/talent/opportunities", icon: Briefcase },
+  { label: "Applications", href: "/talent/applications", icon: FileCheck },
+  { label: "Profile", href: "/profile", icon: User },
+];
+
+const getNavItems = (role: UserRole): NavItem[] => {
+  switch (role) {
+    case "donor":
+      return donorNavItems;
+    case "talent":
+      return talentNavItems;
+    default:
+      return ngoNavItems;
+  }
+};
+
+const getRoleLabel = (role: UserRole): string => {
+  switch (role) {
+    case "donor":
+      return "Donor";
+    case "talent":
+      return "Talent";
+    default:
+      return "Verified NGO";
+  }
+};
+
+const getRoleDashboard = (role: UserRole): string => {
+  switch (role) {
+    case "donor":
+      return "/donor/dashboard";
+    case "talent":
+      return "/talent/dashboard";
+    default:
+      return "/ngo/dashboard";
+  }
+};
 
 interface DashboardLayoutProps {
   children: ReactNode;
+  role?: UserRole;
 }
 
-export function DashboardLayout({ children }: DashboardLayoutProps) {
+export function DashboardLayout({ children, role = "ngo" }: DashboardLayoutProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const mainNavItems = getNavItems(role);
+  const roleLabel = getRoleLabel(role);
+  const roleDashboard = getRoleDashboard(role);
 
   const isActive = (href: string) => location.pathname === href;
 
@@ -78,7 +124,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="flex h-16 items-center justify-between px-4 md:px-6">
           {/* Logo */}
           <div className="flex items-center gap-4">
-            <Link to="/ngo/dashboard" className="flex items-center gap-2 text-foreground hover:text-foreground">
+            <Link to={roleDashboard} className="flex items-center gap-2 text-foreground hover:text-foreground">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
                 <Building2 className="h-5 w-5 text-primary-foreground" />
               </div>
@@ -136,27 +182,27 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                     <AvatarFallback className="bg-primary text-primary-foreground text-sm">SF</AvatarFallback>
                   </Avatar>
                   <div className="hidden md:flex flex-col items-start">
-                    <span className="text-sm font-medium">Seva Foundation</span>
-                    <span className="text-xs text-muted-foreground">Verified NGO</span>
+                    <span className="text-sm font-medium">{role === "ngo" ? "Seva Foundation" : role === "donor" ? "Amit Sharma" : "Priya S."}</span>
+                    <span className="text-xs text-muted-foreground">{roleLabel}</span>
                   </div>
                   <ChevronDown className="h-4 w-4 text-muted-foreground hidden md:block" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuItem asChild>
-                  <Link to="/ngo/dashboard" className="flex items-center gap-2">
+                  <Link to={roleDashboard} className="flex items-center gap-2">
                     <LayoutDashboard className="h-4 w-4" />
-                    NGO Dashboard
+                    {role === "ngo" ? "NGO Dashboard" : role === "donor" ? "Donor Dashboard" : "Talent Dashboard"}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/ngo/profile" className="flex items-center gap-2">
+                  <Link to="/profile" className="flex items-center gap-2">
                     <User className="h-4 w-4" />
                     Profile
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/ngo/settings" className="flex items-center gap-2">
+                  <Link to={role === "donor" ? "/donor/settings" : "/account/security"} className="flex items-center gap-2">
                     <Settings className="h-4 w-4" />
                     Account & Security
                   </Link>
@@ -183,7 +229,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-border py-4 px-4">
             <nav className="space-y-1">
-              {[...mainNavItems, ...secondaryNavItems].map((item) => (
+              {mainNavItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
