@@ -38,6 +38,8 @@ import DonorNotificationsPage from "./pages/onboarding/donor/DonorNotificationsP
 import TalentOnboardingPage from "./pages/onboarding/talent/TalentOnboardingPage";
 // Ecosystem Entry Pages
 import NgoEntryPage from "./pages/ecosystem/NgoEntryPage";
+import DonorEntryPage from "./pages/ecosystem/DonorEntryPage";
+import TalentEntryPage from "./pages/ecosystem/TalentEntryPage";
 import EcosystemMapPage from "./pages/ecosystem/EcosystemMapPage";
 // NGO Dashboard Pages
 import NgoDashboardPage from "./pages/ngo/NgoDashboardPage";
@@ -48,6 +50,15 @@ import NgoReportsPage from "./pages/ngo/NgoReportsPage";
 import NgoFundingPage from "./pages/ngo/NgoFundingPage";
 import NgoSettingsPage from "./pages/ngo/NgoSettingsPage";
 import NgoTalentPage from "./pages/ngo/NgoTalentPage";
+// Donor Dashboard Pages
+import DonorDashboardPage from "./pages/donor/DonorDashboardPage";
+import DonorSavedPage from "./pages/donor/DonorSavedPage";
+import DonorGrantsPage from "./pages/donor/DonorGrantsPage";
+import DonorReportsPage from "./pages/donor/DonorReportsPage";
+import DonorCommunicationsPage from "./pages/donor/DonorCommunicationsPage";
+import DonorSettingsPage from "./pages/donor/DonorSettingsPage";
+// Talent Dashboard Pages
+import TalentDashboardPage from "./pages/talent/TalentDashboardPage";
 // Registry Pages
 import RegistrySearchPage from "./pages/registry/RegistrySearchPage";
 import NgoPublicProfilePage from "./pages/registry/NgoPublicProfilePage";
@@ -94,8 +105,8 @@ const App = () => (
               <Route path="/onboarding/talent" element={<TalentOnboardingPage />} />
               {/* Ecosystem Pages */}
               <Route path="/ecosystem/ngos" element={<NgoEntryPage />} />
-              <Route path="/ecosystem/donors" element={<DonorIdentityPage />} />
-              <Route path="/ecosystem/volunteers" element={<TalentOnboardingPage />} />
+              <Route path="/ecosystem/donors" element={<DonorEntryPage />} />
+              <Route path="/ecosystem/volunteers" element={<TalentEntryPage />} />
               <Route path="/ecosystem/network" element={<HomePage />} />
               <Route path="/ecosystem/map" element={<EcosystemMapPage />} />
               {/* NGO Dashboard */}
@@ -111,6 +122,18 @@ const App = () => (
               <Route path="/ngo/grants" element={<NgoFundingPage />} />
               <Route path="/ngo/donors" element={<NgoMessagesPage />} />
               <Route path="/ngo/profile/preview" element={<NgoPublicProfilePage />} />
+              {/* Donor Dashboard */}
+              <Route path="/donor/dashboard" element={<DonorDashboardPage />} />
+              <Route path="/donor/saved" element={<DonorSavedPage />} />
+              <Route path="/donor/grants" element={<DonorGrantsPage />} />
+              <Route path="/donor/reports" element={<DonorReportsPage />} />
+              <Route path="/donor/communications" element={<DonorCommunicationsPage />} />
+              <Route path="/donor/settings" element={<DonorSettingsPage />} />
+              <Route path="/donor/discover" element={<RegistrySearchPage />} />
+              {/* Talent Dashboard */}
+              <Route path="/talent/dashboard" element={<TalentDashboardPage />} />
+              <Route path="/talent/opportunities" element={<TalentDashboardPage />} />
+              <Route path="/talent/applications" element={<TalentDashboardPage />} />
               {/* Registry Pages */}
               <Route path="/registry/search" element={<RegistrySearchPage />} />
               <Route path="/registry/profile/:id" element={<NgoPublicProfilePage />} />
