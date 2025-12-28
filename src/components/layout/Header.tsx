@@ -166,21 +166,37 @@ export function Header() {
                         </div>
                       </div>
                     </div>
-                    {user.organization && (
-                      <div className="p-3 border-b border-border">
-                        <div className="flex items-center justify-between text-xs text-text-secondary mb-2">
-                          <span>CURRENT ROLE</span>
-                          <Link to="/profile" className="text-link hover:text-link-hover">Switch Role</Link>
-                        </div>
-                        <Link to="/ngo/dashboard" className="flex items-center justify-between p-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
+                    {/* Role Dashboards */}
+                    <div className="p-3 border-b border-border">
+                      <div className="flex items-center justify-between text-xs text-text-secondary mb-2">
+                        <span>YOUR DASHBOARDS</span>
+                      </div>
+                      <div className="space-y-1">
+                        {user.organization && (
+                          <Link to="/ngo/dashboard" className="flex items-center justify-between p-2 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
+                            <div className="flex items-center gap-2">
+                              <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center"><Building2 className="h-4 w-4 text-primary" /></div>
+                              <div><p className="text-sm font-medium text-text-primary">{user.organization.name}</p><p className="text-xs text-text-secondary">NGO Dashboard</p></div>
+                            </div>
+                            <ChevronRight className="h-4 w-4 text-text-secondary" />
+                          </Link>
+                        )}
+                        <Link to="/donor/dashboard" className="flex items-center justify-between p-2 rounded-lg hover:bg-muted transition-colors">
                           <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center"><Building2 className="h-4 w-4 text-primary" /></div>
-                            <div><p className="text-sm font-medium text-text-primary">{user.organization.name}</p><p className="text-xs text-text-secondary">{user.organization.role}</p></div>
+                            <div className="w-8 h-8 rounded bg-emerald-100 flex items-center justify-center"><Users className="h-4 w-4 text-emerald-600" /></div>
+                            <div><p className="text-sm font-medium text-text-primary">Donor Dashboard</p><p className="text-xs text-text-secondary">Grants & Discovery</p></div>
+                          </div>
+                          <ChevronRight className="h-4 w-4 text-text-secondary" />
+                        </Link>
+                        <Link to="/talent/dashboard" className="flex items-center justify-between p-2 rounded-lg hover:bg-muted transition-colors">
+                          <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded bg-amber-100 flex items-center justify-center"><User className="h-4 w-4 text-amber-600" /></div>
+                            <div><p className="text-sm font-medium text-text-primary">Talent Dashboard</p><p className="text-xs text-text-secondary">Opportunities</p></div>
                           </div>
                           <ChevronRight className="h-4 w-4 text-text-secondary" />
                         </Link>
                       </div>
-                    )}
+                    </div>
                     <div className="p-2">
                       <Link to="/profile/public" className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted transition-colors">
                         <Globe className="h-4 w-4 text-text-secondary" /><div><p className="text-sm font-medium text-text-primary">Public Profile</p><p className="text-xs text-text-secondary">View & manage visibility</p></div>
