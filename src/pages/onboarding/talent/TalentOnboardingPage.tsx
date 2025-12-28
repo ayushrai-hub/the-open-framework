@@ -79,7 +79,7 @@ export default function TalentOnboardingPage() {
   };
 
   const handleNext = () => {
-    navigate("/");
+    navigate("/talent/dashboard");
   };
 
   return (
