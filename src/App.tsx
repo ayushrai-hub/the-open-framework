@@ -59,6 +59,13 @@ import DonorCommunicationsPage from "./pages/donor/DonorCommunicationsPage";
 import DonorSettingsPage from "./pages/donor/DonorSettingsPage";
 // Talent Dashboard Pages
 import TalentDashboardPage from "./pages/talent/TalentDashboardPage";
+import TalentApplicationsPage from "./pages/talent/TalentApplicationsPage";
+import TalentOpportunitiesPage from "./pages/talent/TalentOpportunitiesPage";
+import TalentSavedPage from "./pages/talent/TalentSavedPage";
+import TalentOpportunityDetailPage from "./pages/talent/TalentOpportunityDetailPage";
+import TalentProfilePage from "./pages/talent/TalentProfilePage";
+import TalentSettingsPage from "./pages/talent/TalentSettingsPage";
+import TalentMessagesPage from "./pages/talent/TalentMessagesPage";
 // Registry Pages
 import RegistrySearchPage from "./pages/registry/RegistrySearchPage";
 import NgoPublicProfilePage from "./pages/registry/NgoPublicProfilePage";
@@ -132,8 +139,13 @@ const App = () => (
               <Route path="/donor/discover" element={<RegistrySearchPage />} />
               {/* Talent Dashboard */}
               <Route path="/talent/dashboard" element={<TalentDashboardPage />} />
-              <Route path="/talent/opportunities" element={<TalentDashboardPage />} />
-              <Route path="/talent/applications" element={<TalentDashboardPage />} />
+              <Route path="/talent/opportunities" element={<TalentOpportunitiesPage />} />
+              <Route path="/talent/opportunity/:id" element={<TalentOpportunityDetailPage />} />
+              <Route path="/talent/applications" element={<TalentApplicationsPage />} />
+              <Route path="/talent/saved" element={<TalentSavedPage />} />
+              <Route path="/talent/profile" element={<TalentProfilePage />} />
+              <Route path="/talent/settings" element={<TalentSettingsPage />} />
+              <Route path="/talent/messages" element={<TalentMessagesPage />} />
               {/* Registry Pages */}
               <Route path="/registry/search" element={<RegistrySearchPage />} />
               <Route path="/registry/profile/:id" element={<NgoPublicProfilePage />} />

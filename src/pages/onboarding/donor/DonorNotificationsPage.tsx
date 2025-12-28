@@ -26,7 +26,7 @@ export default function DonorNotificationsPage() {
   });
 
   const handleFinish = () => {
-    navigate("/");
+    navigate("/donor/dashboard");
   };
 
   const handleBack = () => {
