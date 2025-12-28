@@ -18,6 +18,23 @@ import JoinUsPage from "./pages/JoinUsPage";
 import ApiReferencePage from "./pages/ApiReferencePage";
 import ComplianceTemplatesPage from "./pages/ComplianceTemplatesPage";
 import NotFound from "./pages/NotFound";
+// Governance Pages
+import BoardMembersPage from "./pages/governance/BoardMembersPage";
+import CodeOfConductPage from "./pages/governance/CodeOfConductPage";
+import GrievanceRedressalPage from "./pages/governance/GrievanceRedressalPage";
+// Legal Pages
+import PrivacyPolicyPage from "./pages/legal/PrivacyPolicyPage";
+import TermsOfUsePage from "./pages/legal/TermsOfUsePage";
+import AccessibilityPage from "./pages/legal/AccessibilityPage";
+// Support Pages
+import SupportCenterPage from "./pages/support/SupportCenterPage";
+import FAQPage from "./pages/support/FAQPage";
+import BoardSupportPage from "./pages/support/BoardSupportPage";
+// Ecosystem Pages
+import PartnersPage from "./pages/ecosystem/PartnersPage";
+import EventsPage from "./pages/ecosystem/EventsPage";
+// Developer Pages
+import DeveloperBoardPage from "./pages/resources/DeveloperBoardPage";
 // Auth Pages
 import LoginPage from "./pages/auth/LoginPage";
 import UserProfilePage from "./pages/profile/UserProfilePage";
@@ -152,6 +169,22 @@ const App = () => (
               {/* Resources */}
               <Route path="/resources/templates" element={<ComplianceTemplatesPage />} />
               <Route path="/resources/api" element={<ApiReferencePage />} />
+              <Route path="/resources/developers" element={<DeveloperBoardPage />} />
+              {/* Governance */}
+              <Route path="/governance/board" element={<BoardMembersPage />} />
+              <Route path="/governance/conduct" element={<CodeOfConductPage />} />
+              <Route path="/governance/grievance" element={<GrievanceRedressalPage />} />
+              {/* Legal */}
+              <Route path="/legal/privacy" element={<PrivacyPolicyPage />} />
+              <Route path="/legal/terms" element={<TermsOfUsePage />} />
+              <Route path="/legal/accessibility" element={<AccessibilityPage />} />
+              {/* Support */}
+              <Route path="/support" element={<SupportCenterPage />} />
+              <Route path="/support/faq" element={<FAQPage />} />
+              <Route path="/support/board" element={<BoardSupportPage />} />
+              {/* Ecosystem */}
+              <Route path="/partners" element={<PartnersPage />} />
+              <Route path="/events" element={<EventsPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

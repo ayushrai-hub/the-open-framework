@@ -35,9 +35,11 @@ const navigation: NavItem[] = [
     label: "Resources",
     children: [
       { label: "Documentation", href: "/documentation", description: "Guides, APIs, and references" },
+      { label: "Developer Board", href: "/resources/developers", description: "APIs, SDKs, and integrations" },
       { label: "Community", href: "/community", description: "Forums and knowledge exchange" },
       { label: "Compliance Templates", href: "/resources/templates", description: "Forms and documents" },
       { label: "API Reference", href: "/resources/api", description: "Developer documentation" },
+      { label: "Support Center", href: "/support", description: "Help and FAQs" },
     ],
   },
   {
