@@ -38,8 +38,8 @@ const sidebarSections = [
   {
     title: "Reference",
     items: [
-      { label: "API Reference", href: "#", icon: Code2 },
-      { label: "Compliance Templates", href: "#", icon: FileText },
+      { label: "API Reference", href: "/resources/api", icon: Code2 },
+      { label: "Compliance Templates", href: "/resources/templates", icon: FileText },
       { label: "Data Dictionary", href: "#", icon: Database },
       { label: "Changelog", href: "#", icon: RefreshCw },
     ],
@@ -101,20 +101,32 @@ export default function DocumentationPage() {
                     {section.title}
                   </h4>
                   <nav className="space-y-1">
-                    {section.items.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-colors ${
-                          item.active
-                            ? "bg-accent/10 text-link font-medium"
-                            : "text-text-secondary hover:text-text-primary hover:bg-muted"
-                        }`}
-                      >
-                        <item.icon className="h-4 w-4" />
-                        {item.label}
-                      </a>
-                    ))}
+                    {section.items.map((item) => {
+                      const isExternal = item.href.startsWith("#");
+                      return isExternal ? (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-colors ${
+                            item.active
+                              ? "bg-accent/10 text-link font-medium"
+                              : "text-text-secondary hover:text-text-primary hover:bg-muted"
+                          }`}
+                        >
+                          <item.icon className="h-4 w-4" />
+                          {item.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={item.label}
+                          to={item.href}
+                          className="flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-colors text-text-secondary hover:text-text-primary hover:bg-muted"
+                        >
+                          <item.icon className="h-4 w-4" />
+                          {item.label}
+                        </Link>
+                      );
+                    })}
                   </nav>
                 </div>
               ))}
@@ -178,7 +190,7 @@ export default function DocumentationPage() {
                   <span className="w-1 h-5 bg-primary rounded-full" />
                   Compliance Templates
                 </h2>
-                <Link to="#" className="link-arrow text-sm">
+                <Link to="/resources/templates" className="link-arrow text-sm">
                   View all templates
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
@@ -234,7 +246,7 @@ export default function DocumentationPage() {
                 </div>
                 <div className="bg-muted px-4 py-3 flex items-center justify-between">
                   <span className="text-xs text-text-secondary">Authentication requires OAuth 2.0 credentials.</span>
-                  <Link to="#" className="link-arrow text-sm">
+                  <Link to="/resources/api" className="link-arrow text-sm">
                     Read Full Documentation
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
