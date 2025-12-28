@@ -204,7 +204,7 @@ export default function TalentDashboardPage() {
                       </Badge>
                     </div>
                   ))}
-                  <Button variant="ghost" size="sm" className="w-full text-primary">
+                  <Button variant="ghost" size="sm" className="w-full text-primary" onClick={() => navigate("/talent/applications")}>
                     View All Applications
                   </Button>
                 </CardContent>
@@ -231,7 +231,7 @@ export default function TalentDashboardPage() {
                       </div>
                     </div>
                   ))}
-                  <Button variant="ghost" size="sm" className="w-full text-primary">
+                  <Button variant="ghost" size="sm" className="w-full text-primary" onClick={() => navigate("/talent/saved")}>
                     View Saved List
                   </Button>
                 </CardContent>
@@ -265,7 +265,7 @@ export default function TalentDashboardPage() {
                   <h2 className="text-lg font-semibold text-foreground">Recommended for you</h2>
                   <p className="text-sm text-muted-foreground">Curated based on your profile and preferences.</p>
                 </div>
-                <Button variant="ghost" size="sm" className="text-primary">View All</Button>
+                <Button variant="ghost" size="sm" className="text-primary" onClick={() => navigate("/talent/opportunities")}>View All</Button>
               </div>
 
               <div className="space-y-4">
@@ -284,7 +284,7 @@ export default function TalentDashboardPage() {
                                 {opp.organization} • <MapPin className="h-3 w-3" /> {opp.location}
                               </p>
                             </div>
-                            <Button size="sm">View Details</Button>
+                            <Button size="sm" onClick={() => navigate(`/talent/opportunities/${opp.id}`)}>View Details</Button>
                           </div>
                           <div className="flex flex-wrap gap-2 mt-3">
                             {opp.tags.map((tag) => (
@@ -346,7 +346,7 @@ export default function TalentDashboardPage() {
                   </div>
                   <Switch checked={publicVisibility} onCheckedChange={setPublicVisibility} />
                 </div>
-                <Button variant="ghost" size="sm" className="w-full text-primary">
+                <Button variant="ghost" size="sm" className="w-full text-primary" onClick={() => navigate("/talent/settings")}>
                   Manage Privacy Settings <ArrowRight className="h-4 w-4 ml-1" />
                 </Button>
               </CardContent>
@@ -372,7 +372,7 @@ export default function TalentDashboardPage() {
                     </div>
                   </div>
                 ))}
-                <Button variant="outline" size="sm" className="w-full">
+                <Button variant="outline" size="sm" className="w-full" onClick={() => navigate("/documentation")}>
                   View All Resources
                 </Button>
               </CardContent>
