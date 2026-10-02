@@ -67,7 +67,7 @@ const updates = [
 
 const principles = [
   { icon: Lock, title: "Zero Knowledge", subtitle: "Privacy First Design" },
-  { icon: Code2, title: "Open Source", subtitle: "MIT Licensed Codebase" },
+  { icon: Code2, title: "Open Source", subtitle: "Public GitHub Repository" },
   { icon: Shield, title: "Regulatory Compliant", subtitle: "CSR & FCRA Ready" },
   { icon: Network, title: "Federated", subtitle: "No Central Data Silo" },
 ];
@@ -81,7 +81,7 @@ export default function HomePage() {
           <div className="max-w-3xl">
             <div className="badge-official mb-6 bg-primary-foreground/20 text-primary-foreground">
               <span className="w-2 h-2 rounded-full bg-status-operational animate-pulse" />
-              System Operational: v2.4 Active
+              Early build: demo data shown
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary-foreground leading-tight">
               Digital Public Infrastructure for India's Social Sector
@@ -113,7 +113,7 @@ export default function HomePage() {
         <div className="container-wide py-8">
           <div className="flex items-center gap-2 text-sm text-text-secondary mb-6">
             <Globe className="h-4 w-4" />
-            <span className="uppercase tracking-wider font-medium">Ecosystem Scale (Live)</span>
+            <span className="uppercase tracking-wider font-medium">Illustrative demo figures - not live data</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
@@ -166,12 +166,12 @@ export default function HomePage() {
       <section className="bg-card">
         <div className="container-wide section-padding">
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Protocol Updates */}
+            {/* Sample Updates (Demo) */}
             <div>
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-semibold flex items-center gap-2">
                   <Globe className="h-5 w-5 text-link" />
-                  Protocol Updates
+                  Sample Updates (Demo)
                 </h3>
                 <Link to="/documentation" className="text-sm link-arrow">
                   View All
