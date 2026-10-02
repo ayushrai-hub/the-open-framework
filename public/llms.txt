@@ -1,0 +1,10 @@
+# The Open Framework
+
+> An in-development open platform concept for India's social sector, connecting NGOs, donors, and volunteers. This is an early build: the figures, updates and dashboards shown on the site are demo data, not live metrics.
+
+Built by Ayush Rai (backend). Source: https://github.com/ayushrai-hub/the-open-framework
+
+## Links
+- [Home](https://www.opentheframework.space/)
+- [Source code](https://github.com/ayushrai-hub/the-open-framework)
+- [Ayush Rai](https://thelifeofayush.vercel.app/)
