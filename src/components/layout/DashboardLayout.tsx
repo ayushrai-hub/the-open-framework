@@ -266,7 +266,7 @@ export function DashboardLayout({ children, role = "ngo" }: DashboardLayoutProps
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2 text-sm text-muted-foreground">
               <span className="w-2 h-2 rounded-full bg-status-operational animate-pulse" />
-              <span>System Operational</span>
+              <span>Demo build</span>
             </span>
             <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground">
               Privacy Policy
